@@ -1,0 +1,29 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+@font-face {
+  font-display: swap;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../public/font/Rubik-Regular.ttf');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../public/font/Rubik-Bold.ttf');
+}
+
+:root {
+  font-family: Rubik;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
