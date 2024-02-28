@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - 6000:6000
+    environment:
+      - DEVELOPMENT=1
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - 4000:4000
+    volumes:
+      - ./frontend:/app
+
+volumes:
+  homeshare:

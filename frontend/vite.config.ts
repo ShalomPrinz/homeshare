@@ -10,4 +10,8 @@ export default defineConfig({
       "~bootstrap": resolve(__dirname, "node_modules/bootstrap"),
     },
   },
+  server: {
+    host: true,
+    port: 4000,
+  },
 });
