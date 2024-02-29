@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+
 import { Table } from "./components";
+import { getSharedFiles } from "./api/files";
 
 const columns = [
   {
@@ -13,20 +16,15 @@ const columns = [
   }
 ]
 
-const data = [
-  {
-    id: "ej12",
-    name: "קובץ לדוגמא",
-    type: "Microsoft Excel"
-  },
-  {
-    id: "fh78",
-    name: "קובץ שני",
-    type: "Microsoft Word"
-  }
-]
-
 function App() {
+  const [files, setFiles] = useState([])
+  
+  useEffect(() => {
+    getSharedFiles()
+      .then((sharedFiles) => setFiles(sharedFiles.data))
+      .catch(err => console.error("error getting files", err))
+  }, [])
+
   return (
     <div className="container text-center">
       <div className="row my-5">
@@ -38,7 +36,7 @@ function App() {
             <span>שיתוף קבצים</span>
           </h2>
           <div className="mx-auto w-50">
-            <Table columns={columns} data={data} dataIdProp="id" />
+            <Table columns={columns} data={files} dataIdProp="name" />
           </div>
         </div>
       </div>
