@@ -7,8 +7,18 @@ function getFolderFiles(folderPath) {
         .filter(file => file.isFile())
         .map(file => ({
             name: path.parse(file.name).name,
-            type: path.extname(file.name).toLowerCase().slice(1)
+            type: getFileType(path.extname(file.name).toLowerCase().slice(1))
         }));
+}
+
+const fileTypeMapping = {
+    'txt': 'טקסט',
+    'docx': 'וורד',
+    'excel': 'אקסל',
+};
+
+function getFileType(type) {
+    return fileTypeMapping[type.toLowerCase()] || 'לא ידוע';
 }
 
 export { getFolderFiles }
