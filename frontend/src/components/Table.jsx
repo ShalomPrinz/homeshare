@@ -15,7 +15,7 @@ function TableHeader({ columns }) {
   return (
     <thead>
       <tr>
-        <List itemCallback={headerCallback} keyProp="path" list={columns} />
+        <List itemCallback={headerCallback} list={columns} />
       </tr>
     </thead>
   );
@@ -32,7 +32,6 @@ function TableBody({ columns, data, dataIdProp }) {
     <tr key={item[dataIdProp]}>
       <List
         itemCallback={(column) => columnCallback(item, column)}
-        keyProp="path"
         list={columns}
       />
     </tr>
