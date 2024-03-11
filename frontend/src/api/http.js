@@ -1,6 +1,10 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:4500/api";
+const serverAddress = import.meta.env.DEV
+  ? "http://localhost:4500"
+  : window.location.origin;
+
+axios.defaults.baseURL = `${serverAddress}/api`;
 
 const get = axios.get;
 

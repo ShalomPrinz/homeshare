@@ -4,7 +4,8 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "preview": "DEV=false node server.js"
   },
   "author": "Shalom Prinz",
   "license": "ISC",
