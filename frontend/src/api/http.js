@@ -7,5 +7,6 @@ const serverAddress = import.meta.env.DEV
 axios.defaults.baseURL = `${serverAddress}/api`;
 
 const get = axios.get;
+const post = axios.post;
 
-export { get };
+export { get, post };

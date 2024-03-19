@@ -1,11 +1,23 @@
 import cors from 'cors'
+import multer from 'multer';
 import express from 'express';
 import path from 'path';
 
-import { getSharedFiles } from './app.js';
+import { getSharedFiles, uploadFiles } from './app.js';
 
 const FRONTEND_DIR = "dist"
 const PORT = 4500;
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'shared/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, decodeURIComponent(file.originalname));
+  }
+});
+
+const upload = multer({ storage });
 
 const app = express();
 
@@ -19,6 +31,11 @@ app.get('/', (req, res) => {
 
 app.get('/api/files', (req, res) => {
   res.json(getSharedFiles());
+})
+
+app.post('/api/upload', upload.array("files"), (req, res) => {
+  uploadFiles(req.files)
+  res.status(200).send()
 })
 
 app.listen(PORT, () => {

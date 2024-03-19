@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Table } from "./components";
-import { getSharedFiles } from "./api/files";
+import { getSharedFiles, uploadFiles } from "./api/files";
 
 const columns = [
   {
@@ -25,6 +25,8 @@ function App() {
       .catch(err => console.error("error getting files", err))
   }, [])
 
+  const handleUpload = (e) => uploadFiles(Array.from(e.target.files)) 
+
   return (
     <div className="container text-center">
       <div className="row my-5">
@@ -32,10 +34,13 @@ function App() {
       </div>
       <div className="row">
         <div className="col">
-          <h2>
-            <span>שיתוף קבצים</span>
-          </h2>
-          <div className="mx-auto w-50">
+          <label className="mb-5" htmlFor="file-upload">
+            <span className="fs-2 bg-primary text-white p-3 rounded border border-none" role="button">
+              העלאת קבצים
+            </span>
+          </label>
+          <input id="file-upload" className="d-none" type="file" multiple onChange={handleUpload} />
+          <div className="mx-auto" style={{ transform: "scale(1.2)", width: "40%" }}>
             <Table columns={columns} data={files} dataIdProp="name" />
           </div>
         </div>

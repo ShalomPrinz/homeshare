@@ -12,9 +12,10 @@ function getFolderFiles(folderPath) {
 }
 
 const fileTypeMapping = {
-    'txt': 'טקסט',
-    'docx': 'וורד',
-    'excel': 'אקסל',
+    'txt':      'טקסט',
+    'docx':     'וורד',
+    'excel':    'אקסל',
+    'pdf':      'PDF'
 };
 
 function getFileType(type) {
